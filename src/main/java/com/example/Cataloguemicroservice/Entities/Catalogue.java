@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -14,6 +17,8 @@ public class Catalogue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCatalogue;
     private String nomCatalogue;
+    @OneToMany
+    private List <Category> categories;
 }
 
 

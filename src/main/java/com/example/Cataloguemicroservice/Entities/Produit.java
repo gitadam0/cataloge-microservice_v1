@@ -16,4 +16,8 @@ public class Produit {
     private Long idProduit;
     private String nomProduit;
     private double prixProduit;
+    @ManyToOne
+    private Category category;
+    @ManyToOne
+    private Etiquette etiquette;
 }
