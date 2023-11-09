@@ -1,6 +1,7 @@
 package com.example.Cataloguemicroservice.Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "catalogue")
 @NoArgsConstructor
 public class Catalogue {

@@ -1,15 +1,13 @@
 package com.example.Cataloguemicroservice.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "categories")
 @NoArgsConstructor
 public class Category {
