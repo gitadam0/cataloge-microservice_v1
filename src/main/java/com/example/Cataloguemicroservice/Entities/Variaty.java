@@ -15,4 +15,5 @@ public class Variaty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVariaty;
     private String nomVariaty;
+    
 }
