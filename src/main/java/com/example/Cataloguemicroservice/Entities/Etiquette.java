@@ -1,4 +1,4 @@
 package com.example.Cataloguemicroservice.Entities;
 
-public class Etequette {
+public class Etiquette {
 }
