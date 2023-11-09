@@ -11,3 +11,4 @@ public class CatalogueMicroserviceApplication {
 		System.out.println("Catalogue Microservice is running...");
 	}
 }
+ 
