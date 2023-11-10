@@ -51,10 +51,8 @@ public class ProduitMapper {
 
         Etiquette etiquette = EtiquetteMapper.dtoToEntity(dto.getEtiquette());
         produit.setEtiquette(etiquette);
-        // You may need to handle the conversion of CategoryDTO to Category here if needed
-        // Example:
-         Category category = CategoryMapper.dtoToEntity(dto.getCategory());
-         produit.setCategory(category);
+        Category category = CategoryMapper.dtoToEntity(dto.getCategory());
+        produit.setCategory(category);
         return produit;
     }
 
