@@ -2,12 +2,10 @@ package com.example.Cataloguemicroservice.Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
-import java.util.Objects;
+//import java.util.Objects;
 
 @Entity
 @Data

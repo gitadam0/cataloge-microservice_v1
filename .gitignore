@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+#ignoring the confict to escape the merge conflict for the databse password
+/src/main/resources/application.properties
