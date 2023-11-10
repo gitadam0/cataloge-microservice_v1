@@ -1,10 +1,7 @@
 package com.example.Cataloguemicroservice.Controller;
-import com.example.Cataloguemicroservice.DTO.ProduitDTO;
 import com.example.Cataloguemicroservice.Entities.Produit;
 import com.example.Cataloguemicroservice.Exceptions.ProductNotFoundException;
-import com.example.Cataloguemicroservice.Mapper.ProductMapper;
 import com.example.Cataloguemicroservice.Services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,10 +42,5 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
-//    @PostMapping("/create-product")
-//    public ProduitDTO createProduct(@RequestBody ProduitDTO productDTO) {
-//        Produit produit = ProductMapper.dtoToEntity(productDTO);
-//        Produit createdProduct = productService.createProduct(produit);
-//        return ProductMapper.entityToDTO(createdProduct);
-//    }
+
 }

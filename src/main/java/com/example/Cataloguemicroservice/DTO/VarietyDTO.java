@@ -12,5 +12,4 @@ public class VarietyDTO {
     private String varietyName;
     private Set<ProduitDTO> produits;
 
-
 }
