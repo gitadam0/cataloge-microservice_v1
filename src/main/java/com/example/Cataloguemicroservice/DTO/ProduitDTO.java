@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 public class ProduitDTO {
-    private Long id;
+    private Long idProduit;
 
     @NotBlank(message = "Product name is required")
     private String nomProduit;

@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EtiquetteDTO {
-    private Long id;
-    private String label;
+    private Long idEtiquette;
+    private String nomEtiquette;
     // Add more fields as needed
 }
 

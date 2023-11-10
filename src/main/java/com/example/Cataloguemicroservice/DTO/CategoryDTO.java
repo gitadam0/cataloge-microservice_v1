@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CategoryDTO {
-    private Long id;
-    private String name;
+    private Long idCategory;
+    private String nameCategory;
     // Add more fields as needed
 }
