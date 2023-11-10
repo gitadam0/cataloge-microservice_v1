@@ -19,16 +19,16 @@ public class Etiquette {
     private String nomEtiquette;
     @OneToMany
     private List<Produit> produits;
-    @Override
-    public int hashCode() {
-        return Objects.hash(nomEtiquette);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Etiquette etiquette = (Etiquette) obj;
-        return Objects.equals(nomEtiquette, etiquette.nomEtiquette);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(nomEtiquette);
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) return true;
+//        if (obj == null || getClass() != obj.getClass()) return false;
+//        Etiquette etiquette = (Etiquette) obj;
+//        return Objects.equals(nomEtiquette, etiquette.nomEtiquette);
+//    }
 }

@@ -31,19 +31,19 @@ public class Produit {
             inverseJoinColumns = @JoinColumn(name = "variety_id"))
     private Set<Variety> varieties;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nomProduit, prixProduit, etiquette, varieties);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Produit produit = (Produit) obj;
-        return Objects.equals(nomProduit, produit.nomProduit) &&
-                Objects.equals(prixProduit, produit.prixProduit) &&
-                Objects.equals(etiquette, produit.etiquette) &&
-                Objects.equals(varieties, produit.varieties);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(nomProduit, prixProduit, etiquette, varieties);
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) return true;
+//        if (obj == null || getClass() != obj.getClass()) return false;
+//        Produit produit = (Produit) obj;
+//        return Objects.equals(nomProduit, produit.nomProduit) &&
+//                Objects.equals(prixProduit, produit.prixProduit) &&
+//                Objects.equals(etiquette, produit.etiquette) &&
+//                Objects.equals(varieties, produit.varieties);
+//    }
 }
