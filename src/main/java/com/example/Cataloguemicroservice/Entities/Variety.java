@@ -19,16 +19,5 @@ public class Variety {
 
     @ManyToMany(mappedBy = "varieties")
     private Set<Produit> produits;
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(varietyName);
-//    }
-//
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) return true;
-//        if (obj == null || getClass() != obj.getClass()) return false;
-//        Variety variety = (Variety) obj;
-//        return Objects.equals(varietyName, variety.varietyName);
-//    }
+
 }
