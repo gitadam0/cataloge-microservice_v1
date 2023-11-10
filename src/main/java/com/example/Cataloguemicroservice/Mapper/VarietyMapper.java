@@ -15,8 +15,6 @@ public class VarietyMapper {
         dto.setIdVariety(variety.getIdVariety());
         dto.setVarietyName(variety.getVarietyName());
 
-        // You may need to handle the Set<Produit> to Set<ProduitDTO> conversion here if needed
-        // Example:
          Set<ProduitDTO> produitDTOs = variety.getProduits().stream()
             .map(ProduitMapper::entityToDTO) // Assuming you have a ProduitMapper
             .collect(Collectors.toSet());
@@ -29,8 +27,6 @@ public class VarietyMapper {
         variety.setIdVariety(dto.getIdVariety());
         variety.setVarietyName(dto.getVarietyName());
 
-        // You may need to handle the conversion of Set<ProduitDTO> to Set<Produit> here if needed
-        // Example:
         Set<Produit> produits = dto.getProduits().stream()
             .map(ProduitMapper::dtoToEntity)
             .collect(Collectors.toSet());
