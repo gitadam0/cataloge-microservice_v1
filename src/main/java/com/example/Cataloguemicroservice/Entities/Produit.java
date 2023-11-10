@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class Produit {
 
     @ManyToOne
     private Etiquette etiquette;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "produit_variety",
