@@ -31,7 +31,7 @@ public class Produit {
             joinColumns = @JoinColumn(name = "produit_id"),
             inverseJoinColumns = @JoinColumn(name = "variety_id"))
     private Set<Variety> varieties;
-
+//test
 //    @Override
 //    public int hashCode() {
 //        return Objects.hash(nomProduit, prixProduit, etiquette, varieties);
