@@ -20,22 +20,18 @@ public class CatalogueServiceImpl implements CatalogueService {
     public CatalogueServiceImpl(CatalogueRepository catalogueRepository) {
         this.catalogueRepository = catalogueRepository;
     }
-
     @Override
     public List<Catalogue> getCatalogues() {
         return catalogueRepository.findAll();
     }
-
     @Override
     public void deleteCatalogue(Long id) {
         catalogueRepository.deleteById(id);
     }
-
     public Catalogue getCatalogueByID(long id) throws CatalogueNotFoundException {
         Optional<Catalogue> optionalCatalogue = catalogueRepository.findById(id);
         return optionalCatalogue.orElseThrow(() -> new CatalogueNotFoundException("Catalogue not found for ID: " + id));
     }
-
     @Override
     public Catalogue updateCatalogue(long id,Catalogue newCatalogue) throws CatalogueNotFoundException {
         Catalogue catalogue = catalogueRepository.findById(id).orElseThrow(()->
