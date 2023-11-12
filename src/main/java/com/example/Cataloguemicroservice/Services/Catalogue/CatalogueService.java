@@ -1,4 +1,4 @@
-package com.example.Cataloguemicroservice.Services;
+package com.example.Cataloguemicroservice.Services.Catalogue;
 
 import com.example.Cataloguemicroservice.Entities.Catalogue;
 import com.example.Cataloguemicroservice.Entities.Produit;

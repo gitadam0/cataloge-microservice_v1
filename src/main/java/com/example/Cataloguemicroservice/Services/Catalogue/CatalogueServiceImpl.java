@@ -1,11 +1,9 @@
-package com.example.Cataloguemicroservice.Services;
+package com.example.Cataloguemicroservice.Services.Catalogue;
 
 import com.example.Cataloguemicroservice.Entities.Catalogue;
-import com.example.Cataloguemicroservice.Entities.Produit;
 import com.example.Cataloguemicroservice.Exceptions.CatalogueNotFoundException;
-import com.example.Cataloguemicroservice.Exceptions.ProductNotFoundException;
 import com.example.Cataloguemicroservice.Repository.CatalogueRepository;
-import com.example.Cataloguemicroservice.Repository.ProduitRepository;
+import com.example.Cataloguemicroservice.Services.Catalogue.CatalogueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +37,7 @@ public class CatalogueServiceImpl implements CatalogueService {
         catalogue.setNomCatalogue(newCatalogue.getNomCatalogue());
         catalogue.setCategories(newCatalogue.getCategories());
 
-        return catalogue;
+        return catalogueRepository.save(catalogue);
     }
 
     @Override
