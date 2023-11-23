@@ -17,6 +17,7 @@ public class Etiquette {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEtiquette;
     private String nomEtiquette;
+
     @OneToMany
     private List<Produit> produits;
 
