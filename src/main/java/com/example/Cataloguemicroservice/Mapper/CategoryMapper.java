@@ -17,7 +17,7 @@ public class CategoryMapper {
 
 
          List<ProduitDTO> produitDTOs = category.getProduits().stream()
-            .map(ProduitMapper::entityToDTO) // Assuming you have a ProduitMapper
+            .map(ProduitMapper::entityToDTO)
             .collect(Collectors.toList());
          catDto.setProduits(produitDTOs);
 
@@ -31,7 +31,7 @@ public class CategoryMapper {
         categoryDto.setNomCategory(dto.getNomCategory());
 
          List<Produit> produits = dto.getProduits().stream()
-            .map(ProduitMapper::dtoToEntity) // Assuming you have a ProduitMapper
+            .map(ProduitMapper::dtoToEntity)
             .collect(Collectors.toList());
          categoryDto.setProduits(produits);
 

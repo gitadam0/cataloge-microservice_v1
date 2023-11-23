@@ -16,7 +16,7 @@ public class EtiquetteMapper {
         dto.setNomEtiquette(etiquette.getNomEtiquette());
 
          List<ProduitDTO> produitDTOs = etiquette.getProduits().stream()
-            .map(ProduitMapper::entityToDTO) // Assuming you have a ProduitMapper
+            .map(ProduitMapper::entityToDTO)
             .collect(Collectors.toList());
 
          dto.setProduits(produitDTOs);
@@ -31,7 +31,7 @@ public class EtiquetteMapper {
         etiquette.setNomEtiquette(dto.getNomEtiquette());
 
          List<Produit> produits = dto.getProduits().stream()
-            .map(ProduitMapper::dtoToEntity) // Assuming you have a ProduitMapper
+            .map(ProduitMapper::dtoToEntity)
             .collect(Collectors.toList());
          etiquette.setProduits(produits);
 

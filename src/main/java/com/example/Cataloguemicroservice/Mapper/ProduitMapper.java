@@ -21,7 +21,7 @@ public class ProduitMapper {
 
         // Convert the Set<Variety> to Set<VarietyDTO>
         Set<VarietyDTO> varietyDTOs = produit.getVarieties().stream()
-                .map(VarietyMapper::entityToDTO) // Use your mapping method for Variety
+                .map(VarietyMapper::entityToDTO)
                 .collect(Collectors.toSet());
 
         dto.setVarieties(varietyDTOs);
@@ -45,7 +45,7 @@ public class ProduitMapper {
 
         // Convert the Set<VarietyDTO> to Set<Variety>
         Set<Variety> varieties = dto.getVarieties().stream()
-                .map(VarietyMapper::dtoToEntity) // Use your mapping method for Variety
+                .map(VarietyMapper::dtoToEntity)
                 .collect(Collectors.toSet());
         produit.setVarieties(varieties);
 

@@ -18,6 +18,10 @@ public class Category {
     private String nomCategory;
     @OneToMany
     private List<Produit> produits;
+
+    // check
+    // check
+    // check
     @ManyToOne
     private Catalogue catalogue;
 

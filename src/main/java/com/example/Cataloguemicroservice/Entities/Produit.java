@@ -24,6 +24,8 @@ public class Produit {
 
     @ManyToOne
     private Etiquette etiquette;
+
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -31,6 +33,5 @@ public class Produit {
             joinColumns = @JoinColumn(name = "produit_id"),
             inverseJoinColumns = @JoinColumn(name = "variety_id"))
     private Set<Variety> varieties;
-
 
 }
