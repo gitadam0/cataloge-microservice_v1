@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
         existingProduct.setNomProduit(updateProduit.getNomProduit());
         existingProduct.setPrixProduit(updateProduit.getPrixProduit());
         existingProduct.setVarieties(updateProduit.getVarieties());
-        existingProduct.setEtiquette(updateProduit.getEtiquette());
+        existingProduct.setEtiquettes(updateProduit.getEtiquettes());
         existingProduct.setCategory(updateProduit.getCategory());
 
         return produitRepository.save(existingProduct);

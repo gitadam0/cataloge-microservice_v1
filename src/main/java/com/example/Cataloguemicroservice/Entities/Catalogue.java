@@ -16,11 +16,10 @@ public class Catalogue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCatalogue;
     private String nomCatalogue;
-    @OneToMany
-    private List <Category> categories;
 
+    @OneToMany(mappedBy = "catalogue", cascade = CascadeType.ALL)
+    private List<Category> categories;
 }
-
 
 
 

@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class Variety {
     private Long idVariety;
     private String varietyName;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "varieties")
     private Set<Produit> produits;
-
 }

@@ -16,13 +16,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategory;
     private String nomCategory;
-    @OneToMany
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Produit> produits;
 
-    // check
-    // check
-    // check
     @ManyToOne
     private Catalogue catalogue;
-
 }
