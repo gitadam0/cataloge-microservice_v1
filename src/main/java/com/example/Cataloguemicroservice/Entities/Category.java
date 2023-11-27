@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Category {
     private String nomCategory;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Produit> produits;
 
 }
