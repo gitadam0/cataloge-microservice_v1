@@ -17,7 +17,7 @@ public class Category {
     private Long idCategory;
     private String nomCategory;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category")
     private List<Produit> produits;
 
     @ManyToOne
