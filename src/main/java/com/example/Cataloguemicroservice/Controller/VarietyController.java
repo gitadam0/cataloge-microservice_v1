@@ -1,4 +1,4 @@
 package com.example.Cataloguemicroservice.Controller;
 
-public class VarietyCOntroller {
+public class VarietyController {
 }
