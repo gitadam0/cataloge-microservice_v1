@@ -38,7 +38,7 @@ public class VarietyController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("id")
+    @PutMapping("/{id}")
     public Variety updateCatalogue(@PathVariable Long id, @RequestBody Variety variety) throws EntityNotFoundException {
         return varietyService.updateVariety(id, variety);
     }
