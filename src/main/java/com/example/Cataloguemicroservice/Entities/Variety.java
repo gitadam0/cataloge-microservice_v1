@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -20,5 +21,5 @@ public class Variety {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "varieties")
-    private Set<Produit> produits;
+    private List<Produit> produits;
 }

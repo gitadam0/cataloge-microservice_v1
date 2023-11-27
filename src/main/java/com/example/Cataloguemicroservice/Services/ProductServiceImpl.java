@@ -2,9 +2,11 @@ package com.example.Cataloguemicroservice.Services;
 
 import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Produit;
+import com.example.Cataloguemicroservice.Entities.Variety;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.ProduitRepository;
+import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,11 +15,13 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private final ProduitRepository produitRepository;
     private final EtiquetteRepository etiquetteRepository;
+    private final VarietyRepository varietyRepository;
 
     @Autowired
-    public ProductServiceImpl(ProduitRepository produitRepository,EtiquetteRepository etiquetteRepository) {
+    public ProductServiceImpl(ProduitRepository produitRepository,EtiquetteRepository etiquetteRepository,VarietyRepository varietyRepository) {
         this.produitRepository = produitRepository;
         this.etiquetteRepository = etiquetteRepository;
+        this.varietyRepository = varietyRepository;
     }
 
     @Override
@@ -66,4 +70,18 @@ public class ProductServiceImpl implements ProductService {
         existingProduct.getEtiquettes().add(existingEtiquette);
         return produitRepository.save(existingProduct);
     }
+
+    @Override
+    public Produit addVariety(Long id,Long idVariety) throws EntityNotFoundException {
+        Produit existingProduct = produitRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
+
+        Variety existingVariety = varietyRepository.findById(idVariety)
+                .orElseThrow(() -> new EntityNotFoundException("Variety not found with id: " + idVariety));
+
+        existingProduct.getVarieties().add(existingVariety);
+        return produitRepository.save(existingProduct);
+    }
+
+
 }

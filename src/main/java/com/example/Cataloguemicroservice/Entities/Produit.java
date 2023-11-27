@@ -28,7 +28,7 @@ public class Produit {
             name = "produit_etiquette",
             joinColumns = @JoinColumn(name = "produit_id"),
             inverseJoinColumns = @JoinColumn(name = "etiquette_id"))
-    private List<Etiquette> etiquettes;
+    private Set<Etiquette> etiquettes;
 
 
     @ManyToMany
