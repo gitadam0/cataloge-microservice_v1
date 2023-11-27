@@ -1,8 +1,6 @@
 package com.example.Cataloguemicroservice.Services.Etiquette;
 
-import com.example.Cataloguemicroservice.Entities.Catalogue;
 import com.example.Cataloguemicroservice.Entities.Etiquette;
-import com.example.Cataloguemicroservice.Exceptions.CatalogueNotFoundException;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 
 import java.util.List;

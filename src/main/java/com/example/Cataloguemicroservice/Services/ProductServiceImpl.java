@@ -1,7 +1,7 @@
 package com.example.Cataloguemicroservice.Services;
 
 import com.example.Cataloguemicroservice.Entities.Produit;
-import com.example.Cataloguemicroservice.Exceptions.ProductNotFoundException;
+import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.ProduitRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -20,9 +20,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Produit updateProduct(Long id, Produit updateProduit) throws ProductNotFoundException {
+    public Produit updateProduct(Long id, Produit updateProduit) throws EntityNotFoundException {
         Produit existingProduct = produitRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
         existingProduct.setNomProduit(updateProduit.getNomProduit());
         existingProduct.setPrixProduit(updateProduit.getPrixProduit());
         existingProduct.setVarieties(updateProduit.getVarieties());
@@ -39,9 +39,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Produit getProductById(Long id) throws ProductNotFoundException {
+    public Produit getProductById(Long id) throws EntityNotFoundException {
         return produitRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
     }
 
     @Override
