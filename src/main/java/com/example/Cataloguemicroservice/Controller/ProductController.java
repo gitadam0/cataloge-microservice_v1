@@ -1,8 +1,7 @@
 package com.example.Cataloguemicroservice.Controller;
 import com.example.Cataloguemicroservice.Entities.Produit;
-import com.example.Cataloguemicroservice.Exceptions.ProductNotFoundException;
+import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Produit getProductById(@PathVariable Long id) throws ProductNotFoundException {
+    public Produit getProductById(@PathVariable Long id) throws EntityNotFoundException {
         return productService.getProductById(id);
     }
 
@@ -34,7 +33,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public Produit updateProduct(@PathVariable Long id, @RequestBody Produit product) throws ProductNotFoundException {
+    public Produit updateProduct(@PathVariable Long id, @RequestBody Produit product) throws EntityNotFoundException {
         return productService.updateProduct(id, product);
     }
 

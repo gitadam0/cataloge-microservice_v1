@@ -1,9 +1,8 @@
 package com.example.Cataloguemicroservice.Services.Catalogue;
 
 import com.example.Cataloguemicroservice.Entities.Catalogue;
-import com.example.Cataloguemicroservice.Exceptions.CatalogueNotFoundException;
+import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.CatalogueRepository;
-import com.example.Cataloguemicroservice.Services.Catalogue.CatalogueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +25,14 @@ public class CatalogueServiceImpl implements CatalogueService {
     public void deleteCatalogue(Long id) {
         catalogueRepository.deleteById(id);
     }
-    public Catalogue getCatalogueByID(long id) throws CatalogueNotFoundException {
+    public Catalogue getCatalogueByID(long id) throws EntityNotFoundException {
         Optional<Catalogue> optionalCatalogue = catalogueRepository.findById(id);
-        return optionalCatalogue.orElseThrow(() -> new CatalogueNotFoundException("Catalogue not found for ID: " + id));
+        return optionalCatalogue.orElseThrow(() -> new EntityNotFoundException("Catalogue not found for ID: " + id));
     }
     @Override
-    public Catalogue updateCatalogue(long id,Catalogue newCatalogue) throws CatalogueNotFoundException {
+    public Catalogue updateCatalogue(long id,Catalogue newCatalogue) throws EntityNotFoundException {
         Catalogue catalogue = catalogueRepository.findById(id).orElseThrow(()->
-                new CatalogueNotFoundException("Catalogue not found to update for ID: " + id));
+                new EntityNotFoundException("Catalogue not found to update for ID: " + id));
         catalogue.setNomCatalogue(newCatalogue.getNomCatalogue());
         catalogue.setCategories(newCatalogue.getCategories());
 
