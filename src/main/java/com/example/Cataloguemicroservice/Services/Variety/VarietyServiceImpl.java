@@ -1,3 +1,4 @@
+
 package com.example.Cataloguemicroservice.Services.Variety;
 
 import com.example.Cataloguemicroservice.Entities.Variety;
@@ -6,9 +7,12 @@ import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class VarietyServiceImpl implements VarietyService{
 
     private VarietyRepository varietyRepository;
