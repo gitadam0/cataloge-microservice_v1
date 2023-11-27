@@ -11,5 +11,6 @@ public interface ProductService {
     void deleteProduct(Long id);
    Produit getProductById(Long id) throws EntityNotFoundException;
     List<Produit> getProducts();
+    Produit addEtiquette(Long id,Long idEtiquette) throws EntityNotFoundException;
 
 }

@@ -43,4 +43,10 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/addEtiquette/{id}/{idEtiquette}")
+    public Produit addEtiquette(@PathVariable Long id,@PathVariable Long idEtiquette) throws EntityNotFoundException {
+        return productService.addEtiquette(id,idEtiquette);
+    }
+
+
 }
