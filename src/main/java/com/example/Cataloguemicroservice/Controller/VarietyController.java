@@ -1,9 +1,7 @@
 package com.example.Cataloguemicroservice.Controller;
 
-import com.example.Cataloguemicroservice.Entities.Catalogue;
 import com.example.Cataloguemicroservice.Entities.Variety;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
-import com.example.Cataloguemicroservice.Services.Catalogue.CatalogueService;
 import com.example.Cataloguemicroservice.Services.Variety.VarietyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
