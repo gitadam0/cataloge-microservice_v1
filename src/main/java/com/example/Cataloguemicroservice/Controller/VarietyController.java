@@ -18,28 +18,28 @@ public class VarietyController {
     }
 
     @GetMapping
-    public List<Variety> getAllCatalogues() {
+    public List<Variety> getAllVarieties() {
         return varietyService.getVarietys();
     }
 
     @GetMapping("/{id}")
-    public Variety getCatalogueByID(@PathVariable Long id) throws EntityNotFoundException {
+    public Variety getVarietyByID(@PathVariable Long id) throws EntityNotFoundException {
         return varietyService.getVarietyByID(id);
     }
 
     @PostMapping
-    public Variety createCatalogue(@RequestBody Variety variety) {
+    public Variety createVariety(@RequestBody Variety variety) {
         return varietyService.createVariety(variety);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCatalogue(@PathVariable Long id) {
+    public ResponseEntity<?> deleteVariety(@PathVariable Long id) {
         varietyService.deleteVariety(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
-    public Variety updateCatalogue(@PathVariable Long id, @RequestBody Variety variety) throws EntityNotFoundException {
+    public Variety updateVariety(@PathVariable Long id, @RequestBody Variety variety) throws EntityNotFoundException {
         return varietyService.updateVariety(id, variety);
     }
 }
