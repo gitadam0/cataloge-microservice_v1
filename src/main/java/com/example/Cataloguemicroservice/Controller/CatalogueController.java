@@ -41,7 +41,7 @@ public class CatalogueController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("id")
+    @PutMapping("/{id}")
     public Catalogue updateCatalogue(@PathVariable Long id, @RequestBody Catalogue catalogue) throws EntityNotFoundException {
         return catalogueService.updateCatalogue(id, catalogue);
     }
