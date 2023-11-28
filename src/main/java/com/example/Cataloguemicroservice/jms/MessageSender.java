@@ -16,7 +16,7 @@ public class MessageSender {
 
     public void sendMessage(String messageText) {
 
-        String destination = "TEST-TOPIC-team5";
+        String destination = "TEST-TOPIC-Catalogue";
 
         jmsTemplate.send(destination, session -> {
             javax.jms.TextMessage message = session.createTextMessage(messageText);
