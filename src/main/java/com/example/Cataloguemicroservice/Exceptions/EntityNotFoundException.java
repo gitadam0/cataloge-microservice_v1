@@ -1,6 +1,6 @@
 package com.example.Cataloguemicroservice.Exceptions;
 
-public class EntityNotFoundException extends RuntimeException {
+public class EntityNotFoundException extends Exception {
     public EntityNotFoundException(String message) {
         super(message);
     }

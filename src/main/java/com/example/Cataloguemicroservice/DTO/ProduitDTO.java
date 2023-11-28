@@ -2,6 +2,8 @@ package com.example.Cataloguemicroservice.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 import java.util.Set;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -19,7 +21,7 @@ public class ProduitDTO {
 
     private Set<VarietyDTO> varieties;
 
-    private EtiquetteDTO etiquette;
+    private List<EtiquetteDTO> etiquette;
 
     private CategoryDTO category;
 

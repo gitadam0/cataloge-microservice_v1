@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,11 +23,14 @@ public class Produit {
     @ManyToOne
     private Category category;
 
-    @ManyToOne
-    private Etiquette etiquette;
+    @ManyToMany
+    @JoinTable(
+            name = "produit_etiquette",
+            joinColumns = @JoinColumn(name = "produit_id"),
+            inverseJoinColumns = @JoinColumn(name = "etiquette_id"))
+    private Set<Etiquette> etiquettes;
 
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "produit_variety",

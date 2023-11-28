@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,7 +20,7 @@ public class Etiquette {
     private Long idEtiquette;
     private String nomEtiquette;
 
-    @OneToMany
+    @JsonIgnore
+    @ManyToMany(mappedBy = "etiquettes")
     private List<Produit> produits;
-
 }
