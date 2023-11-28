@@ -2,6 +2,8 @@ package com.example.Cataloguemicroservice.Controller;
 import com.example.Cataloguemicroservice.Entities.Produit;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.ProductService;
+import com.example.Cataloguemicroservice.jms.MessageSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,5 +54,17 @@ public class ProductController {
     public Produit addVariety(@PathVariable Long id,@PathVariable Long idVariety) throws EntityNotFoundException {
         return productService.addVariety(id,idVariety);
     }
+
+    @Autowired
+    MessageSender messageSender;
+
+    @GetMapping("/Test")
+    public String Test(){
+        messageSender.sendMessage("mon message");
+
+        return "OK";
+    }
+
+
 
 }
