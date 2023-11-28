@@ -58,13 +58,22 @@ public class ProductController {
     @Autowired
     MessageSender messageSender;
 
+
     @GetMapping("/Test")
-    public String Test(){
-        messageSender.sendMessage("mon message");
+    public String Test() throws EntityNotFoundException {
+        messageSender.sendMessage("mon message de adam");
+        messageSender.sendProduct(productService.getProductById(1L));
 
         return "OK";
     }
 
+    @PostMapping("/sendProduct")
+    public String sendProduct(@RequestBody Produit produit) throws EntityNotFoundException {
+
+        messageSender.sendProduct(produit);
+
+        return "OK";
+    }
 
 
 }
