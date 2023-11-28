@@ -1,6 +1,8 @@
 package com.example.Cataloguemicroservice.Controller;
+
 import com.example.Cataloguemicroservice.Entities.Produit;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
+import com.example.Cataloguemicroservice.Services.MessagingService.YourMessagingService;
 import com.example.Cataloguemicroservice.Services.ProductService;
 import com.example.Cataloguemicroservice.jms.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    @Autowired
+    private YourMessagingService messagingService;
+
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -46,13 +51,13 @@ public class ProductController {
     }
 
     @PostMapping("/addEtiquette/{id}/{idEtiquette}")
-    public Produit addEtiquette(@PathVariable Long id,@PathVariable Long idEtiquette) throws EntityNotFoundException {
-        return productService.addEtiquette(id,idEtiquette);
+    public Produit addEtiquette(@PathVariable Long id, @PathVariable Long idEtiquette) throws EntityNotFoundException {
+        return productService.addEtiquette(id, idEtiquette);
     }
 
     @PostMapping("/addVariety/{id}/{idVariety}")
-    public Produit addVariety(@PathVariable Long id,@PathVariable Long idVariety) throws EntityNotFoundException {
-        return productService.addVariety(id,idVariety);
+    public Produit addVariety(@PathVariable Long id, @PathVariable Long idVariety) throws EntityNotFoundException {
+        return productService.addVariety(id, idVariety);
     }
 
     @Autowired
@@ -71,9 +76,8 @@ public class ProductController {
     public String sendProduct(@RequestBody Produit produit) throws EntityNotFoundException {
 
         messageSender.sendProduct(produit);
+        return"ok";
 
-        return "OK";
     }
-
 
 }
