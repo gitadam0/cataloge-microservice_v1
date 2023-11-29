@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessageConsumer {
-    @JmsListener(destination = "Test-Tech-IT", containerFactory = "jmsListenerContainerFactory")
+    @JmsListener(destination = "ProductToStock", containerFactory = "jmsListenerContainerFactory")
     public void receiveMessage(String message) {
         System.out.println(" Message reçu du topicccccccccccccccccccccccccc");
         System.out.println("Message reçu du topic : " + message);

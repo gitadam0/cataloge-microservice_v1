@@ -65,19 +65,18 @@ public class ProductController {
     MessageSender messageSender;
 
 
-    @GetMapping("/Test")
+ /*   @GetMapping("/Test")
     public String Test() throws EntityNotFoundException {
         messageSender.sendProduct(new ProductDTO(productService.getProductById(1L)) );
 
         return "OK";
     }
+*/
+    @PostMapping("/createProductInStock")
+    public Product createProductInStock(@RequestBody Product product) throws EntityNotFoundException {
+        messageSender.sendProduct(new ProductDTO(product));
+        return productService.createProduct(product);
 
-    /*@PostMapping("/sendProduct")
-    public String sendProduct(@RequestBody Produit produit) throws EntityNotFoundException {
-
-        messageSender.sendProduct(produit);
-        return"ok";
-
-    }*/
+    }
 
 }
