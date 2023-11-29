@@ -1,6 +1,6 @@
 package com.example.Cataloguemicroservice.Services.MessagingService;
 
-import com.example.Cataloguemicroservice.Entities.Produit;
+import com.example.Cataloguemicroservice.Entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class YourMessagingService {
     // Assuming 'yourQueue' is the name of the JMS queue you want to send messages to
     private static final String YOUR_QUEUE = "TEST-TOPIC-Catalogue";
 
-    public void sendProduit(Produit produit) {
+    public void sendProduit(Product produit) {
         jmsTemplate.convertAndSend(YOUR_QUEUE, produit);
     }
 }

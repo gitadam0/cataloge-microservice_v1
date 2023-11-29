@@ -11,7 +11,7 @@ public class EtiquetteDTO {
     private Long idEtiquette;
     private String nomEtiquette;
     // Add more fields as needed
-    private List<ProduitDTO> produits; // Add the list of ProduitDTO objects
+    private List<ProductDTO> produits; // Add the list of ProduitDTO objects
 
 }
 

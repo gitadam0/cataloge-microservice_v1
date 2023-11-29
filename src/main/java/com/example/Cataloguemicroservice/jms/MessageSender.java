@@ -1,6 +1,6 @@
 package com.example.Cataloguemicroservice.jms;
 
-import com.example.Cataloguemicroservice.Entities.Produit;
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ public class MessageSender {
         this.jmsTemplate = jmsTemplate;
         this.objectMapper = objectMapper;
     }
-    public void sendProduct(Produit produit) {
+    public void sendProduct(ProductDTO produitdto) {
         try {
-            String jsonMessage = objectMapper.writeValueAsString(produit);
-            String destination = "Test-Tech-IT";
+            String jsonMessage = objectMapper.writeValueAsString(produitdto);
+            String destination = "ProductToStock";
             jmsTemplate.send(destination, session -> {
                 javax.jms.TextMessage message = session.createTextMessage(jsonMessage);
                 return message;
@@ -33,7 +33,7 @@ public class MessageSender {
     }
     public void sendMessage(String messageText) {
 
-        String destination = "Test-Tech-IT";
+        String destination = "ProductToStock";
 
         jmsTemplate.send(destination, session -> {
             javax.jms.TextMessage message = session.createTextMessage(messageText);

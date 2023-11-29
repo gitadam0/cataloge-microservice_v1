@@ -1,17 +1,17 @@
 package com.example.Cataloguemicroservice.Services;
 
-import com.example.Cataloguemicroservice.Entities.Produit;
+import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 
 import java.util.List;
 
 public interface ProductService {
-    Produit createProduct(Produit product);
-    Produit updateProduct(Long id, Produit product) throws EntityNotFoundException;
+    Product createProduct(Product product);
+    Product updateProduct(Long id, Product product) throws EntityNotFoundException;
     void deleteProduct(Long id);
-   Produit getProductById(Long id) throws EntityNotFoundException;
-    List<Produit> getProducts();
-    Produit addEtiquette(Long id,Long idEtiquette) throws EntityNotFoundException;
-    Produit addVariety(Long id,Long idVariety) throws EntityNotFoundException;
+   Product getProductById(Long id) throws EntityNotFoundException;
+    List<Product> getProducts();
+    Product addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException;
+    Product addVariety(Long id, Long idVariety) throws EntityNotFoundException;
 
 }

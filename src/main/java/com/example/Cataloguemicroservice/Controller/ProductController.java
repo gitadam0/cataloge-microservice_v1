@@ -1,6 +1,7 @@
 package com.example.Cataloguemicroservice.Controller;
 
-import com.example.Cataloguemicroservice.Entities.Produit;
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
+import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.MessagingService.YourMessagingService;
 import com.example.Cataloguemicroservice.Services.ProductService;
@@ -25,22 +26,22 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Produit> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productService.getProducts();
     }
 
     @GetMapping("/{id}")
-    public Produit getProductById(@PathVariable Long id) throws EntityNotFoundException {
+    public Product getProductById(@PathVariable Long id) throws EntityNotFoundException {
         return productService.getProductById(id);
     }
 
     @PostMapping
-    public Produit createProduct(@RequestBody Produit product) {
+    public Product createProduct(@RequestBody Product product) {
         return productService.createProduct(product);
     }
 
     @PutMapping("/{id}")
-    public Produit updateProduct(@PathVariable Long id, @RequestBody Produit product) throws EntityNotFoundException {
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) throws EntityNotFoundException {
         return productService.updateProduct(id, product);
     }
 
@@ -51,12 +52,12 @@ public class ProductController {
     }
 
     @PostMapping("/addEtiquette/{id}/{idEtiquette}")
-    public Produit addEtiquette(@PathVariable Long id, @PathVariable Long idEtiquette) throws EntityNotFoundException {
+    public Product addEtiquette(@PathVariable Long id, @PathVariable Long idEtiquette) throws EntityNotFoundException {
         return productService.addEtiquette(id, idEtiquette);
     }
 
     @PostMapping("/addVariety/{id}/{idVariety}")
-    public Produit addVariety(@PathVariable Long id, @PathVariable Long idVariety) throws EntityNotFoundException {
+    public Product addVariety(@PathVariable Long id, @PathVariable Long idVariety) throws EntityNotFoundException {
         return productService.addVariety(id, idVariety);
     }
 
@@ -66,18 +67,17 @@ public class ProductController {
 
     @GetMapping("/Test")
     public String Test() throws EntityNotFoundException {
-        messageSender.sendMessage("mon message de adam");
-        messageSender.sendProduct(productService.getProductById(1L));
+        messageSender.sendProduct(new ProductDTO(productService.getProductById(1L)) );
 
         return "OK";
     }
 
-    @PostMapping("/sendProduct")
+    /*@PostMapping("/sendProduct")
     public String sendProduct(@RequestBody Produit produit) throws EntityNotFoundException {
 
         messageSender.sendProduct(produit);
         return"ok";
 
-    }
+    }*/
 
 }

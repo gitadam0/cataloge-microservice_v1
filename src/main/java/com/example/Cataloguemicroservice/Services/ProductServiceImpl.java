@@ -1,7 +1,7 @@
 package com.example.Cataloguemicroservice.Services;
 
 import com.example.Cataloguemicroservice.Entities.Etiquette;
-import com.example.Cataloguemicroservice.Entities.Produit;
+import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Variety;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
@@ -25,13 +25,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Produit createProduct(Produit product) {
+    public Product createProduct(Product product) {
         return produitRepository.save(product);
     }
 
     @Override
-    public Produit updateProduct(Long id, Produit updateProduit) throws EntityNotFoundException {
-        Produit existingProduct = produitRepository.findById(id)
+    public Product updateProduct(Long id, Product updateProduit) throws EntityNotFoundException {
+        Product existingProduct = produitRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
         existingProduct.setNomProduit(updateProduit.getNomProduit());
         existingProduct.setPrixProduit(updateProduit.getPrixProduit());
@@ -49,19 +49,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Produit getProductById(Long id) throws EntityNotFoundException {
+    public Product getProductById(Long id) throws EntityNotFoundException {
         return produitRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
     }
 
     @Override
-    public List<Produit> getProducts() {
+    public List<Product> getProducts() {
         return produitRepository.findAll();
     }
 
     @Override
-    public Produit addEtiquette(Long id,Long idEtiquette) throws EntityNotFoundException {
-        Produit existingProduct = produitRepository.findById(id)
+    public Product addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException {
+        Product existingProduct = produitRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
 
         Etiquette existingEtiquette = etiquetteRepository.findById(idEtiquette)
@@ -72,8 +72,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Produit addVariety(Long id,Long idVariety) throws EntityNotFoundException {
-        Produit existingProduct = produitRepository.findById(id)
+    public Product addVariety(Long id, Long idVariety) throws EntityNotFoundException {
+        Product existingProduct = produitRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
 
         Variety existingVariety = varietyRepository.findById(idVariety)

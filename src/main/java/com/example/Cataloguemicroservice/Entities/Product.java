@@ -1,24 +1,22 @@
 package com.example.Cataloguemicroservice.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Data
 @Table(name = "produits")
 @NoArgsConstructor
-public class Produit implements Serializable {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProduit;
     private String nomProduit;
+    private String description;
     private double prixProduit;
 
     @ManyToOne
