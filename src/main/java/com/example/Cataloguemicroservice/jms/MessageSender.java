@@ -21,7 +21,7 @@ public class MessageSender {
     public void sendProduct(Produit produit) {
         try {
             String jsonMessage = objectMapper.writeValueAsString(produit);
-            String destination = "TEST-TOPIC-Catalogue";
+            String destination = "Test-Tech-IT";
             jmsTemplate.send(destination, session -> {
                 javax.jms.TextMessage message = session.createTextMessage(jsonMessage);
                 return message;
@@ -33,7 +33,7 @@ public class MessageSender {
     }
     public void sendMessage(String messageText) {
 
-        String destination = "TEST-TOPIC-Catalogue";
+        String destination = "Test-Tech-IT";
 
         jmsTemplate.send(destination, session -> {
             javax.jms.TextMessage message = session.createTextMessage(messageText);
