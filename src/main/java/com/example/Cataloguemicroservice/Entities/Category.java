@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Data
@@ -20,6 +19,6 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     @JsonIgnore
-    private List<Produit> produits;
+    private List<Product> produits;
 
 }
