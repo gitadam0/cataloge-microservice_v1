@@ -18,9 +18,11 @@ public class ProductDTO {
 
     private String nom;
     private String description;
+    private String category;
     public ProductDTO(Product product) {
         this.nom = product.getNomProduit();
         this.description = product.getDescription();
+        this.category = product.getCategory().getNomCategory();
     }
 
 }

@@ -4,6 +4,7 @@ import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Variety;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
+import com.example.Cataloguemicroservice.Repository.CategoryRepository;
 import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.ProduitRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
@@ -15,12 +16,14 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private final ProduitRepository produitRepository;
     private final EtiquetteRepository etiquetteRepository;
+    private final CategoryRepository categoryRepository;
     private final VarietyRepository varietyRepository;
 
     @Autowired
-    public ProductServiceImpl(ProduitRepository produitRepository,EtiquetteRepository etiquetteRepository,VarietyRepository varietyRepository) {
+    public ProductServiceImpl(ProduitRepository produitRepository, EtiquetteRepository etiquetteRepository, CategoryRepository categoryRepository, VarietyRepository varietyRepository) {
         this.produitRepository = produitRepository;
         this.etiquetteRepository = etiquetteRepository;
+        this.categoryRepository = categoryRepository;
         this.varietyRepository = varietyRepository;
     }
 

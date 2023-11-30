@@ -11,12 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
 
     private final ProductService productService;
+
     @Autowired
     private YourMessagingService messagingService;
 
@@ -74,8 +76,11 @@ public class ProductController {
 */
     @PostMapping("/createProductInStock")
     public Product createProductInStock(@RequestBody Product product) throws EntityNotFoundException {
-        messageSender.sendProduct(new ProductDTO(product));
-        return productService.createProduct(product);
+        Product p = productService.createProduct(product);
+         //messageSender.sendProduct(new ProductDTO(p));
+        System.out.println(p.getCategory().getNomCategory());
+        return p;
+
 
     }
 
