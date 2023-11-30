@@ -1,8 +1,5 @@
 package com.example.Cataloguemicroservice.Mapper;
 
-import com.example.Cataloguemicroservice.DTO.CategoryDTO;
-import com.example.Cataloguemicroservice.Entities.Category;
-
 
 public class CategoryMapper {
 

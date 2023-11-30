@@ -1,6 +1,6 @@
 package com.example.Cataloguemicroservice.Controller;
 
-import com.example.Cataloguemicroservice.DTO.ProductDTO;
+import com.example.Cataloguemicroservice.DTO.response.ProductResponseDTO;
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.MessagingService.YourMessagingService;
@@ -74,7 +74,7 @@ public class ProductController {
 */
     @PostMapping("/createProductInStock")
     public Product createProductInStock(@RequestBody Product product) throws EntityNotFoundException {
-        messageSender.sendProduct(new ProductDTO(product));
+        messageSender.sendProduct(new ProductResponseDTO(product));
         return productService.createProduct(product);
 
     }

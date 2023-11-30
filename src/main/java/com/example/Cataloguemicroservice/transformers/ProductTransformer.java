@@ -1,6 +1,6 @@
 package com.example.Cataloguemicroservice.transformers;
 
-import com.example.Cataloguemicroservice.DTO.ProductDTO;
+import com.example.Cataloguemicroservice.DTO.response.ProductResponseDTO;
 import com.example.Cataloguemicroservice.Entities.Product;
 
 import java.util.List;
@@ -10,8 +10,8 @@ needs to perform additional processing, a dedicated transformer class provides a
 encapsulate this logic.*/
 public class ProductTransformer {
 
-    public static ProductDTO transformToDTO(Product product) {
-        ProductDTO productDTO = new ProductDTO();
+    public static ProductResponseDTO transformToDTO(Product product) {
+        ProductResponseDTO productDTO = new ProductResponseDTO();
         productDTO.setNom(product.getNomProduit());
         productDTO.setDescription(product.getDescription());
         // Set other fields as needed
@@ -19,7 +19,7 @@ public class ProductTransformer {
     }
 
     // You can also create a method for transforming a list of products to a list of DTOs
-    public static List<ProductDTO> transformListToDTOList(List<Product> productList) {
+    public static List<ProductResponseDTO> transformListToDTOList(List<Product> productList) {
         return productList.stream()
                 .map(ProductTransformer::transformToDTO)
                 .collect(Collectors.toList());
