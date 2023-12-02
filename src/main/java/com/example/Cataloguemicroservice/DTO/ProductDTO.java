@@ -16,13 +16,11 @@ public class ProductDTO {
     /*@NotBlank(message = "Product name is required")
     private String nomProduit;*/
 
-    private String nom;
+    private String name;
     private String description;
-    private String category;
     public ProductDTO(Product product) {
-        this.nom = product.getNomProduit();
+        this.name = product.getNomProduit();
         this.description = product.getDescription();
-        this.category = product.getCategory().getNomCategory();
     }
 
 }

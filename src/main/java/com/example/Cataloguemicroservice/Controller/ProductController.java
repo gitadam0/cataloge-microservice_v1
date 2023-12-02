@@ -38,8 +38,12 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@RequestBody Product product) throws EntityNotFoundException {
         return productService.createProduct(product);
+    }
+    @PostMapping("/createMultiProduct")
+    public List<Product> createMultiProduct(@RequestBody List<Product> products) {
+        return productService.createProducts(products);
     }
 
     @PutMapping("/{id}")
@@ -77,7 +81,7 @@ public class ProductController {
     @PostMapping("/createProductInStock")
     public Product createProductInStock(@RequestBody Product product) throws EntityNotFoundException {
         Product p = productService.createProduct(product);
-         //messageSender.sendProduct(new ProductDTO(p));
+        messageSender.sendProduct(new ProductDTO(p));
         System.out.println(p.getCategory().getNomCategory());
         return p;
 

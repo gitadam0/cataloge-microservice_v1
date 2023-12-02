@@ -1,4 +1,4 @@
-package com.example.Cataloguemicroservice.Mapper;
+package com.example.Cataloguemicroservice.mapper;
 
 
 public class VarietyMapper {

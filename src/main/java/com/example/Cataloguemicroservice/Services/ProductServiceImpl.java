@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Services;
 
+import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Variety;
@@ -8,28 +9,39 @@ import com.example.Cataloguemicroservice.Repository.CategoryRepository;
 import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.ProduitRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
+import com.example.Cataloguemicroservice.Services.Category.CategoryService;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProduitRepository produitRepository;
     private final EtiquetteRepository etiquetteRepository;
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
     private final VarietyRepository varietyRepository;
 
     @Autowired
-    public ProductServiceImpl(ProduitRepository produitRepository, EtiquetteRepository etiquetteRepository, CategoryRepository categoryRepository, VarietyRepository varietyRepository) {
+    public ProductServiceImpl(ProduitRepository produitRepository, EtiquetteRepository etiquetteRepository, CategoryService categoryService, VarietyRepository varietyRepository) {
         this.produitRepository = produitRepository;
         this.etiquetteRepository = etiquetteRepository;
-        this.categoryRepository = categoryRepository;
+        this.categoryService = categoryService;
         this.varietyRepository = varietyRepository;
     }
 
     @Override
-    public Product createProduct(Product product) {
+    public Product createProduct(Product product) throws EntityNotFoundException {
+        //solution for the category object name raltion with the product
+        Category category = categoryService.getCategoryByID(product.getCategory().getIdCategory());
+        product.setCategory(category);
         return produitRepository.save(product);
+    }
+
+    @Override
+    public List<Product> createProducts(List<Product> products) {
+        return produitRepository.saveAll(products);
     }
 
     @Override
