@@ -26,14 +26,14 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
-    public List<ProductDTO> getAllProducts() {
-        return productService.getProducts();
-    }
-
     @GetMapping("/{id}")
     public ProductDTO getProductById(@PathVariable Long id) throws EntityNotFoundException {
         return productService.getProductById(id);
+    }
+
+    @GetMapping
+    public List<ProductDTO> getAllProducts() {
+        return productService.getProducts();
     }
 
     @PostMapping
@@ -50,13 +50,6 @@ public class ProductController {
     public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductDTO product) throws EntityNotFoundException {
         return productService.updateProduct(id, product);
     }
-
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
-
-    }
-
     @PostMapping("/addEtiquette/{id}/{idEtiquette}")
     public ProductDTO addEtiquette(@PathVariable Long id, @PathVariable Long idEtiquette) throws EntityNotFoundException {
         return productService.addEtiquette(id, idEtiquette);
@@ -91,6 +84,10 @@ public class ProductController {
         messageSender.sendProduct(productdto);
         System.out.println(productdto.getName());
         return productdto;
+    }
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
     }
 
 

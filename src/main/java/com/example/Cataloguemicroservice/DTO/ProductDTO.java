@@ -12,17 +12,18 @@ public class ProductDTO {
 
     /*@NotBlank(message = "Product name is required")
     private String nomProduct;*/
-
+    private Long idProduct;
     private String name;
     private String description;
     private double prixProduct;
-    private Long cetegoryID;
+    private Long categoryID;
 
-    public ProductDTO(String name, String description, double prixProduct, Long cetegoryID) {
+    public ProductDTO(Long idProduct,String name, String description, double prixProduct, Long categoryID) {
+        this.idProduct = idProduct;
         this.name = name;
         this.description = description;
         this.prixProduct = prixProduct;
-        this.cetegoryID = cetegoryID;
+        this.categoryID = categoryID;
     }
 /*
  If your transformation logic is straightforward, involves simple field mapping, and doesn't require
