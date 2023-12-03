@@ -12,7 +12,7 @@ public class ProductTransformer {
 
     public static ProductDTO transformToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setNom(product.getNomProduit());
+        productDTO.setName(product.getNomProduit());
         productDTO.setDescription(product.getDescription());
         // Set other fields as needed
         return productDTO;
