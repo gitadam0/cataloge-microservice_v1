@@ -21,7 +21,6 @@ public class ProductServiceImpl implements ProductService {
     private final EtiquetteRepository etiquetteRepository;
     private final CategoryService categoryService;
     private final VarietyRepository varietyRepository;
-
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository, EtiquetteRepository etiquetteRepository, CategoryService categoryService, VarietyRepository varietyRepository) {
         this.productRepository = productRepository;
@@ -29,7 +28,6 @@ public class ProductServiceImpl implements ProductService {
         this.categoryService = categoryService;
         this.varietyRepository = varietyRepository;
     }
-
     @Override
     public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
         //solution for the category object name raltion with the product
@@ -38,59 +36,47 @@ public class ProductServiceImpl implements ProductService {
 //        product.setCategory(category);
         return product;
     }
-
     @Override
     public List<ProductDTO> createProducts(List<ProductDTO> products) {
         productRepository.saveAll(ProductTransformer.transformListToEntityList(products));
         return products;
     }
-
     @Override
     public ProductDTO updateProduct(Long id, ProductDTO updatedProductDTO) throws EntityNotFoundException {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
         Product updatedProduct = ProductTransformer.transformToEntity(updatedProductDTO);
-        existingProduct.setNomProduit(updatedProduct.getNomProduit());
-        existingProduct.setPrixProduit(updatedProduct.getPrixProduit());
+        existingProduct.setNomProduct(updatedProduct.getNomProduct());
+        existingProduct.setPrixProduct(updatedProduct.getPrixProduct());
         existingProduct.setVarieties(updatedProduct.getVarieties());
         existingProduct.setEtiquettes(updatedProduct.getEtiquettes());
         existingProduct.setCategory(updatedProduct.getCategory());
         productRepository.save(existingProduct);
         return updatedProductDTO;
     }
-
-
     @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
-
     }
-
     @Override
     public ProductDTO getProductById(Long id) throws EntityNotFoundException {
         Product p = productRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
         return ProductTransformer.transformToDTO(p);
     }
-
     @Override
     public List<ProductDTO> getProducts() {
         return ProductTransformer.transformListToDTOList(productRepository.findAll());
     }
-
     @Override
     public ProductDTO addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + id));
-
         Etiquette existingEtiquette = etiquetteRepository.findById(idEtiquette)
                 .orElseThrow(() -> new EntityNotFoundException("Etiquette not found with id: " + idEtiquette));
-
         productRepository.save(existingProduct);
         return ProductTransformer.transformToDTO(existingProduct);
     }
-
-
     @Override
     public ProductDTO addVariety(Long id, Long idVariety) throws EntityNotFoundException {
         Product existingProduct = productRepository.findById(id)
@@ -104,6 +90,4 @@ public class ProductServiceImpl implements ProductService {
         }
         return ProductTransformer.transformToDTO(productRepository.save(existingProduct));
     }
-
-
 }

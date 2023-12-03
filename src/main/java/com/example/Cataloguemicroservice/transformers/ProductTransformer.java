@@ -13,7 +13,7 @@ public class ProductTransformer {
 
     public static ProductDTO transformToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setName(product.getNomProduit());
+        productDTO.setName(product.getNomProduct());
         productDTO.setDescription(product.getDescription());
         // Set other fields as needed
         return productDTO;
@@ -27,9 +27,9 @@ public class ProductTransformer {
     }
     public static Product transformToEntity(ProductDTO productDTO) {
         Product product = new Product();
-        product.setNomProduit(productDTO.getName());
+        product.setNomProduct(productDTO.getName());
         product.setDescription(productDTO.getDescription());
-        product.setPrixProduit(productDTO.getPrixProduit());
+        product.setPrixProduct(productDTO.getPrixProduit());
 
         Category category=new Category();
         category.setIdCategory(productDTO.getCetegoryID());

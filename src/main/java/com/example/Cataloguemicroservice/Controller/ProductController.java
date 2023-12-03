@@ -87,10 +87,10 @@ public class ProductController {
     }*/
     @PostMapping("/createProductInStock")
     public ProductDTO createProductInStock(@RequestBody ProductDTO productDTO) throws EntityNotFoundException {
-        ProductDTO p = productService.createProduct(productDTO);
-        messageSender.sendProduct(productDTO);
-        System.out.println(p.getCetegoryID());
-        return p;
+        ProductDTO productdto = productService.createProduct(productDTO);
+        messageSender.sendProduct(productdto);
+        System.out.println(productdto.getName());
+        return productdto;
     }
 
 
