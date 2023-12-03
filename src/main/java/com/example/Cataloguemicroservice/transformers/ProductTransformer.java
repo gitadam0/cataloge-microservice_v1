@@ -37,4 +37,10 @@ public class ProductTransformer {
         // Set other fields as needed
         return product;
     }
+    public static List<Product> transformListToEntityList(List<ProductDTO> productDTOList) {
+        return productDTOList.stream()
+                .map(ProductTransformer::transformToEntity)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -8,12 +8,12 @@ import java.util.List;
 
 public interface ProductService {
     ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException;
-    List<Product> createProducts(List<Product> products);
-    Product updateProduct(Long id, Product product) throws EntityNotFoundException;
+    List<ProductDTO> createProducts(List<ProductDTO> products);
+    ProductDTO updateProduct(Long id, ProductDTO product) throws EntityNotFoundException;
     void deleteProduct(Long id);
-   Product getProductById(Long id) throws EntityNotFoundException;
-    List<Product> getProducts();
-    Product addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException;
-    Product addVariety(Long id, Long idVariety) throws EntityNotFoundException;
+   ProductDTO getProductById(Long id) throws EntityNotFoundException;
+    List<ProductDTO> getProducts();
+    ProductDTO addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException;
+    ProductDTO addVariety(Long id, Long idVariety) throws EntityNotFoundException;
 
 }
