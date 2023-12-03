@@ -29,7 +29,7 @@ public class ProductTransformer {
         Product product = new Product();
         product.setNomProduct(productDTO.getName());
         product.setDescription(productDTO.getDescription());
-        product.setPrixProduct(productDTO.getPrixProduit());
+        product.setPrixProduct(productDTO.getPrixProduct());
 
         Category category=new Category();
         category.setIdCategory(productDTO.getCetegoryID());

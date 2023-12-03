@@ -18,17 +18,17 @@ public class MessageSender {
         this.jmsTemplate = jmsTemplate;
         this.objectMapper = objectMapper;
     }
-    public void sendProduct(ProductDTO produitdto) {
+    public void sendProduct(ProductDTO productDTO) {
         try {
-            String jsonMessage = objectMapper.writeValueAsString(produitdto);
+            String jsonMessage = objectMapper.writeValueAsString(productDTO);
             String destination = "ProductToStock";
             jmsTemplate.send(destination, session -> {
                 javax.jms.TextMessage message = session.createTextMessage(jsonMessage);
                 return message;
             });
-            System.out.println("Produit envoyé avec succès à la file d'attente " + destination);
+            System.out.println("Product envoyé avec succès à la file d'attente " + destination);
         } catch (JsonProcessingException e) {
-            System.err.println("Error converting Produit to JSON: " + e.getMessage());
+            System.err.println("Error converting Product to JSON: " + e.getMessage());
         }
     }
     public void sendMessage(String messageText) {

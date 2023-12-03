@@ -41,7 +41,7 @@ public class VarietyServiceImpl implements VarietyService{
         Variety variety = varietyRepository.findById(id).orElseThrow(()->
                 new EntityNotFoundException("Variety not found to update for ID: " + id));
         variety.setVarietyName(newVariety.getVarietyName());
-        variety.setProduits(newVariety.getProduits());
+        variety.setProducts(newVariety.getProducts());
 
         return varietyRepository.save(variety);
     }

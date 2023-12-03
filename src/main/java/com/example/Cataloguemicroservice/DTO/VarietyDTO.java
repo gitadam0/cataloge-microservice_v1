@@ -10,6 +10,6 @@ import java.util.Set;
 public class VarietyDTO {
     private Long idVariety;
     private String varietyName;
-    private Set<ProductDTO> produits;
+    private Set<ProductDTO> products;
 
 }

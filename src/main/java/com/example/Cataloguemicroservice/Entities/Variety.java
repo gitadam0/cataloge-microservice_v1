@@ -19,5 +19,5 @@ public class Variety {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "varieties")
-    private List<Product> produits;
+    private List<Product> products;
 }

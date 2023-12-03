@@ -41,7 +41,7 @@ class CategoryControllerDiffblueTest {
         Category category = new Category();
         category.setIdCategory(1L);
         category.setNomCategory("Nom Category");
-        category.setProduits(new ArrayList<>());
+        category.setProducts(new ArrayList<>());
         when(categoryService.getCategoryByID(anyLong())).thenReturn(category);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/categories/{id}", 1L);
         MockMvcBuilders.standaloneSetup(categoryController)
@@ -62,7 +62,7 @@ class CategoryControllerDiffblueTest {
         Category category = new Category();
         category.setIdCategory(1L);
         category.setNomCategory("Nom Category");
-        category.setProduits(new ArrayList<>());
+        category.setProducts(new ArrayList<>());
         String content = (new ObjectMapper()).writeValueAsString(category);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/categories")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -125,7 +125,7 @@ class CategoryControllerDiffblueTest {
         Category category = new Category();
         category.setIdCategory(1L);
         category.setNomCategory("Nom Category");
-        category.setProduits(new ArrayList<>());
+        category.setProducts(new ArrayList<>());
         String content = (new ObjectMapper()).writeValueAsString(category);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.put("/api/categories/id")
                 .contentType(MediaType.APPLICATION_JSON)

@@ -11,17 +11,17 @@ import lombok.Setter;
 public class ProductDTO {
 
     /*@NotBlank(message = "Product name is required")
-    private String nomProduit;*/
+    private String nomProduct;*/
 
     private String name;
     private String description;
-    private double prixProduit;
+    private double prixProduct;
     private Long cetegoryID;
 
-    public ProductDTO(String name, String description, double prixProduit, Long cetegoryID) {
+    public ProductDTO(String name, String description, double prixProduct, Long cetegoryID) {
         this.name = name;
         this.description = description;
-        this.prixProduit = prixProduit;
+        this.prixProduct = prixProduct;
         this.cetegoryID = cetegoryID;
     }
 /*
@@ -29,7 +29,7 @@ public class ProductDTO {
   extensive customization, constructor-based initialization provides a concise and readable way to create
    DTOs.*/
  /*   public ProductDTO(Product product) {
-        this.name = product.getNomProduit();
+        this.name = product.getNomProduct();
         this.description = product.getDescription();
     }
 */

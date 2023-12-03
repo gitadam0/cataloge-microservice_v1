@@ -36,7 +36,7 @@ public class EtiquetteServiceImpl implements EtiquetteService{
         Etiquette etiquette = etiquetteRepository.findById(id).orElseThrow(()->
                 new EntityNotFoundException("Etiquette not found to update for ID: " + id));
         etiquette.setNomEtiquette(newEtiquette.getNomEtiquette());
-        etiquette.setProduits(newEtiquette.getProduits());
+        etiquette.setProducts(newEtiquette.getProducts());
 
         return etiquetteRepository.save(etiquette);
     }

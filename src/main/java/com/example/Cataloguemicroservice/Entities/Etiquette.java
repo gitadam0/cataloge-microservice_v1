@@ -20,5 +20,5 @@ public class Etiquette {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "etiquettes")
-    private List<Product> produits;
+    private List<Product> products;
 }

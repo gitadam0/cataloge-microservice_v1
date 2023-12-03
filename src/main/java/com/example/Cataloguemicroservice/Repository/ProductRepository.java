@@ -11,11 +11,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByCategory(Category category);
 
     // Find products by etiquette
-//    List<Produit> findByEtiquette(Etiquette etiquette);
+//    List<Product> findByEtiquette(Etiquette etiquette);
 
     // Find products by price less than a specified value
-    List<Product> findByPrixProduitLessThan(double maxPrice);
+    List<Product> findByPrixProductLessThan(double maxPrice);
 
     // Find products by name containing a certain keyword
-    List<Product> findByNomProduitContains(String keyword);
+    List<Product> findByNomProductContains(String keyword);
 }
