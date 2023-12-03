@@ -15,6 +15,7 @@ public class ProductTransformer {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName(product.getNomProduct());
         productDTO.setDescription(product.getDescription());
+        productDTO.setCetegoryID(product.getCategory().getIdCategory());
         // Set other fields as needed
         return productDTO;
     }

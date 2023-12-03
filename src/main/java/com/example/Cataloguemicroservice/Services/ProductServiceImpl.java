@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService {
     }
     @Override
     public List<ProductDTO> getProducts() {
-        return ProductTransformer.transformListToDTOList(productRepository.findAll());
+        return ProductTransformer.transformListToDTOList(productRepository.findAll()) ;
     }
     @Override
     public ProductDTO addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException {
