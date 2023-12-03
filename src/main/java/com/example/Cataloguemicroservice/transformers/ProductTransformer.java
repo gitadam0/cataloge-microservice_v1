@@ -29,12 +29,11 @@ public class ProductTransformer {
         Product product = new Product();
         product.setNomProduit(productDTO.getName());
         product.setDescription(productDTO.getDescription());
+        product.setPrixProduit(productDTO.getPrixProduit());
 
         Category category=new Category();
         category.setIdCategory(productDTO.getCetegoryID());
         product.setCategory(category);
-
-        // Set other fields as needed
         return product;
     }
     public static List<Product> transformListToEntityList(List<ProductDTO> productDTOList) {

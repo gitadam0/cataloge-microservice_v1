@@ -86,11 +86,7 @@ public class ProductServiceImpl implements ProductService {
         Etiquette existingEtiquette = etiquetteRepository.findById(idEtiquette)
                 .orElseThrow(() -> new EntityNotFoundException("Etiquette not found with id: " + idEtiquette));
 
-        if (existingProduct != null && existingEtiquette != null) {
-            existingProduct.getEtiquettes().add(existingEtiquette);
-
-            productRepository.save(existingProduct);
-        }
+        productRepository.save(existingProduct);
         return ProductTransformer.transformToDTO(existingProduct);
     }
 
