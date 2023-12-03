@@ -1,6 +1,7 @@
 package com.example.Cataloguemicroservice.Services;
 
 import com.example.Cataloguemicroservice.DTO.ProductDTO;
+import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Product;
 import com.example.Cataloguemicroservice.Entities.Variety;
@@ -28,14 +29,24 @@ public class ProductServiceImpl implements ProductService {
         this.categoryService = categoryService;
         this.varietyRepository = varietyRepository;
     }
-    @Override
-    public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
-        //solution for the category object name raltion with the product
-        productRepository.save(ProductTransformer.transformToEntity(product));
-//        Category category = categoryService.getCategoryByID(product.getCategory().getIdCategory());
-//        product.setCategory(category);
-        return product;
-    }
+//    @Override
+//    public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
+//        //solution for the category object name raltion with the product
+//       Product producto =  productRepository.save(ProductTransformer.transformToEntity(product));
+//       producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
+//        return product;
+//    }
+@Override
+public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
+    Product producto = productRepository.save(ProductTransformer.transformToEntity(product));
+    // Fetch the existing Category from the database based on the idCategory
+    Category category = categoryService.getCategoryByID(product.getCategoryID());
+    producto.setCategory(category);
+
+    // Transform the updated Product entity back to DTO
+    return ProductTransformer.transformToDTO(productRepository.save(producto));
+}
+
     @Override
     public List<ProductDTO> createProducts(List<ProductDTO> products) {
         productRepository.saveAll(ProductTransformer.transformListToEntityList(products));

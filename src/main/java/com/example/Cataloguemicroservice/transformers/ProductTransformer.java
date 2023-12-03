@@ -11,14 +11,26 @@ needs to perform additional processing, a dedicated transformer class provides a
 encapsulate this logic.*/
 public class ProductTransformer {
 
+//    public static ProductDTO transformToDTO(Product product) {
+//        ProductDTO productDTO = new ProductDTO();
+//        productDTO.setName(product.getNomProduct());
+//        productDTO.setDescription(product.getDescription());
+//        productDTO.setPrixProduct(product.getPrixProduct());
+//        productDTO.setCategoryID(product.getCategory().getIdCategory());
+//        // Set other fields as needed
+//        return productDTO;
+//    }
     public static ProductDTO transformToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName(product.getNomProduct());
         productDTO.setDescription(product.getDescription());
-        // Set other fields as needed
+        productDTO.setPrixProduct(product.getPrixProduct());
+
+        if (product.getCategory() != null) {
+            productDTO.setCategoryID(product.getCategory().getIdCategory());
+        }
         return productDTO;
     }
-
     // You can also create a method for transforming a list of products to a list of DTOs
     public static List<ProductDTO> transformListToDTOList(List<Product> productList) {
         return productList.stream()
@@ -27,15 +39,22 @@ public class ProductTransformer {
     }
     public static Product transformToEntity(ProductDTO productDTO) {
         Product product = new Product();
+        product.setIdProduct(productDTO.getIdProduct());
         product.setNomProduct(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setPrixProduct(productDTO.getPrixProduct());
 
-        Category category=new Category();
-        category.setIdCategory(productDTO.getCetegoryID());
-        product.setCategory(category);
+        // Check if categoryID is not null before setting the category
+        if (productDTO.getCategoryID() != null) {
+            Category category = new Category();
+            category.setIdCategory(productDTO.getCategoryID());
+            product.setCategory(category);
+        }
+
         return product;
     }
+
+
     public static List<Product> transformListToEntityList(List<ProductDTO> productDTOList) {
         return productDTOList.stream()
                 .map(ProductTransformer::transformToEntity)
