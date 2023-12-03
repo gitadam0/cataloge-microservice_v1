@@ -6,17 +6,20 @@ import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.MessagingService.YourMessagingService;
 import com.example.Cataloguemicroservice.Services.ProductService;
 import com.example.Cataloguemicroservice.jms.MessageSender;
+import com.example.Cataloguemicroservice.transformers.ProductDTOTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
 
     private final ProductService productService;
+
     @Autowired
     private YourMessagingService messagingService;
 
@@ -36,8 +39,12 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@RequestBody Product product) throws EntityNotFoundException {
         return productService.createProduct(product);
+    }
+    @PostMapping("/createMultiProduct")
+    public List<Product> createMultiProduct(@RequestBody List<Product> products) {
+        return productService.createProducts(products);
     }
 
     @PutMapping("/{id}")
@@ -72,11 +79,20 @@ public class ProductController {
         return "OK";
     }
 */
-    @PostMapping("/createProductInStock")
+/*    @PostMapping("/createProductInStock")
     public Product createProductInStock(@RequestBody Product product) throws EntityNotFoundException {
-        messageSender.sendProduct(new ProductDTO(product));
-        return productService.createProduct(product);
+        Product p = productService.createProduct(product);
+        messageSender.sendProduct(new ProductDTO(p));
+        System.out.println(p.getCategory().getNomCategory());
+        return p;
+    }*/
+ @PostMapping("/createProductInStock")
+ public Product createProductInStock(@RequestBody ProductDTO productDTO) throws EntityNotFoundException {
+     Product p = productService.createProduct(ProductDTOTransformer.transformToProduct(productDTO));
+     messageSender.sendProduct(productDTO);
+     System.out.println(p.getCategory().getNomCategory());
+     return p;
+ }
 
-    }
 
 }

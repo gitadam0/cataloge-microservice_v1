@@ -6,7 +6,8 @@ import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
 import java.util.List;
 
 public interface ProductService {
-    Product createProduct(Product product);
+    Product createProduct(Product product) throws EntityNotFoundException;
+    List<Product> createProducts(List<Product> products);
     Product updateProduct(Long id, Product product) throws EntityNotFoundException;
     void deleteProduct(Long id);
    Product getProductById(Long id) throws EntityNotFoundException;
