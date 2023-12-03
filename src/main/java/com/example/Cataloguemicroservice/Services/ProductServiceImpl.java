@@ -1,5 +1,6 @@
 package com.example.Cataloguemicroservice.Services;
 
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.Entities.Category;
 import com.example.Cataloguemicroservice.Entities.Etiquette;
 import com.example.Cataloguemicroservice.Entities.Product;
@@ -10,6 +11,7 @@ import com.example.Cataloguemicroservice.Repository.EtiquetteRepository;
 import com.example.Cataloguemicroservice.Repository.ProduitRepository;
 import com.example.Cataloguemicroservice.Repository.VarietyRepository;
 import com.example.Cataloguemicroservice.Services.Category.CategoryService;
+import com.example.Cataloguemicroservice.transformers.ProductTransformer;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,11 +34,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createProduct(Product product) throws EntityNotFoundException {
+    public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundException {
         //solution for the category object name raltion with the product
-        Category category = categoryService.getCategoryByID(product.getCategory().getIdCategory());
-        product.setCategory(category);
-        return produitRepository.save(product);
+        produitRepository.save(ProductTransformer.transformToEntity(product));
+//        Category category = categoryService.getCategoryByID(product.getCategory().getIdCategory());
+//        product.setCategory(category);
+        return product ;
     }
 
     @Override
