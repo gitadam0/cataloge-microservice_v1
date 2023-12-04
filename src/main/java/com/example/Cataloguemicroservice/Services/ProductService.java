@@ -16,4 +16,5 @@ public interface ProductService {
     ProductDTO addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException;
     ProductDTO addVariety(Long id, Long idVariety) throws EntityNotFoundException;
 
+    public Product findProductByNom(String productName);
 }

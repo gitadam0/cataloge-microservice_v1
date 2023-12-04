@@ -18,6 +18,7 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
     private final ProductRepository productRepository;
     private final EtiquetteRepository etiquetteRepository;
     private final CategoryService categoryService;
@@ -100,5 +101,11 @@ public ProductDTO createProduct(ProductDTO product) throws EntityNotFoundExcepti
             existingProduct.getVarieties().add(existingVariety);
         }
         return ProductTransformer.transformToDTO(productRepository.save(existingProduct));
+    }
+
+    @Override
+    public Product findProductByNom(String productName) {
+
+        return productRepository.findProductByNom(productName);
     }
 }
