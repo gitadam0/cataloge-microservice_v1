@@ -1,7 +1,7 @@
 package com.example.Cataloguemicroservice.Controller;
 
 import com.example.Cataloguemicroservice.Entities.Etiquette;
-import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
+import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.Etiquette.EtiquetteService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +22,25 @@ public class EtiquetteController {
     }
 
     @GetMapping("/{id}")
-    public Etiquette getEtiquetteById(@PathVariable Long id) throws EntityNotFoundException {
+    public Etiquette getEtiquetteById(@PathVariable Long id) throws MyEntityNotFoundException {
         return etiquetteService.getEtiquetteByID(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteEtiquette(@PathVariable Long id) {
         etiquetteService.deleteEtiquette(id);
+    }
+    @DeleteMapping("/ids")
+    public void deleteEtiquettes(@RequestBody List<Long> ids) {
+
+        try {
+            etiquetteService.deleteEtiquetteIfNotUsed(ids.get(0));
+        } catch (MyEntityNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //etiquetteService.deleteEtiquettes(ids);
     }
 
     @PostMapping
@@ -37,7 +49,7 @@ public class EtiquetteController {
     }
 
     @PutMapping("/{id}")
-    public Etiquette updateEtiquette(@PathVariable Long id, @RequestBody Etiquette etiquette) throws EntityNotFoundException {
+    public Etiquette updateEtiquette(@PathVariable Long id, @RequestBody Etiquette etiquette) throws MyEntityNotFoundException {
         return etiquetteService.updateEtiquette(id, etiquette);
     }
 }

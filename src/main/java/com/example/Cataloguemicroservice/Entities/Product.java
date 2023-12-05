@@ -30,8 +30,6 @@ public class Product implements Serializable {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "etiquette_id"))
     private Set<Etiquette> etiquettes;
-
-
     @ManyToMany
     @JoinTable(
             name = "product_variety",
