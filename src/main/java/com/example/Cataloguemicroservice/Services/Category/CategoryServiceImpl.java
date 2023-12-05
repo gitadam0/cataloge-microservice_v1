@@ -25,8 +25,8 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.deleteById(id);
     }
     public Category getCategoryByID(long id) throws MyEntityNotFoundException {
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
-        return optionalCategory.orElseThrow(() -> new MyEntityNotFoundException("Category not found for ID: " + id));
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new MyEntityNotFoundException("Category not found for ID: " + id));
     }
     @Override
     public Category updateCategory(long id,Category newCategory) throws MyEntityNotFoundException {

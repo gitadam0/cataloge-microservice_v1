@@ -36,6 +36,7 @@ class ProductServiceImplTest {
     void createProduct() throws MyEntityNotFoundException {
         Category category = new Category();
         category.setIdCategory(1L);
+
         Product p1 = new Product();
         p1.setNomProduct("adam");
         p1.setCategory(category);
@@ -49,9 +50,11 @@ class ProductServiceImplTest {
         p1Dto.setIdProduct(1L);
         p1Dto.setName("adam");
         p1Dto.setCategoryID(category.getIdCategory());
-        //when(productRepository.findAll()).thenReturn(Arrays.asList(p1));
+        //when(productRepository.findAll()).thenReturn(List.of(p1));
+
         when(categoryService.getCategoryByID(1L)).thenReturn(category);
-        when(productRepository.save(any())).thenReturn(savedP1);
+        //when(productRepository.save(any())).thenReturn(p1);
+        when(productRepository.save(p1)).thenReturn(p1);
 
         productService.createProduct(ProductTransformer.transformToDTO(p1));
 

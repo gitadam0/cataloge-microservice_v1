@@ -39,12 +39,9 @@ public class ProductServiceImpl implements ProductService {
 //    }
 @Override
 public ProductDTO createProduct(ProductDTO product) throws MyEntityNotFoundException {
-    Product producto = productRepository.save(ProductTransformer.transformToEntity(product));
-    // Fetch the existing Category from the database based on the idCategory
-    Category category = categoryService.getCategoryByID(product.getCategoryID());
-    producto.setCategory(category);
+    Product producto = ProductTransformer.transformToEntity(product);
+    producto.setCategory(categoryService.getCategoryByID(product.getCategoryID()));
 
-    // Transform the updated Product entity back to DTO
     return ProductTransformer.transformToDTO(productRepository.save(producto));
 }
 
