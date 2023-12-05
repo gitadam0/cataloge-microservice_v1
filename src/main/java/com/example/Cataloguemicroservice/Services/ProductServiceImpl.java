@@ -87,6 +87,7 @@ public ProductDTO createProduct(ProductDTO product) throws MyEntityNotFoundExcep
                 .orElseThrow(() -> new MyEntityNotFoundException("Product not found with id: " + id));
         Etiquette existingEtiquette = etiquetteRepository.findById(idEtiquette)
                 .orElseThrow(() -> new MyEntityNotFoundException("Etiquette not found with id: " + idEtiquette));
+        existingProduct.getEtiquettes().add(existingEtiquette);
         productRepository.save(existingProduct);
         return ProductTransformer.transformToDTO(existingProduct);
     }
@@ -94,13 +95,9 @@ public ProductDTO createProduct(ProductDTO product) throws MyEntityNotFoundExcep
     public ProductDTO addVariety(Long id, Long idVariety) throws MyEntityNotFoundException {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new MyEntityNotFoundException("Product not found with id: " + id));
-
         Variety existingVariety = varietyRepository.findById(idVariety)
                 .orElseThrow(() -> new MyEntityNotFoundException("Variety not found with id: " + idVariety));
-        if (existingProduct != null && existingVariety != null) {
-
-            existingProduct.getVarieties().add(existingVariety);
-        }
+        existingProduct.getVarieties().add(existingVariety);
         return ProductTransformer.transformToDTO(productRepository.save(existingProduct));
     }
 
