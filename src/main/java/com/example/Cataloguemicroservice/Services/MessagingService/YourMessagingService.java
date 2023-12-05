@@ -13,7 +13,7 @@ public class YourMessagingService {
     // Assuming 'yourQueue' is the name of the JMS queue you want to send messages to
     private static final String YOUR_QUEUE = "TEST-TOPIC-Catalogue";
 
-    public void sendProduit(Product produit) {
-        jmsTemplate.convertAndSend(YOUR_QUEUE, produit);
+    public void sendProduct(Product product) {
+        jmsTemplate.convertAndSend(YOUR_QUEUE, product);
     }
 }

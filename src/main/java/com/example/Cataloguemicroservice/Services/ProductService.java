@@ -1,18 +1,20 @@
 package com.example.Cataloguemicroservice.Services;
 
+import com.example.Cataloguemicroservice.DTO.ProductDTO;
 import com.example.Cataloguemicroservice.Entities.Product;
-import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
+import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 
 import java.util.List;
 
 public interface ProductService {
-    Product createProduct(Product product) throws EntityNotFoundException;
-    List<Product> createProducts(List<Product> products);
-    Product updateProduct(Long id, Product product) throws EntityNotFoundException;
+    ProductDTO createProduct(ProductDTO product) throws MyEntityNotFoundException;
+    List<ProductDTO> createProducts(List<ProductDTO> products);
+    ProductDTO updateProduct(Long id, ProductDTO product) throws MyEntityNotFoundException;
     void deleteProduct(Long id);
-   Product getProductById(Long id) throws EntityNotFoundException;
+   ProductDTO getProductById(Long id) throws MyEntityNotFoundException;
     List<Product> getProducts();
-    Product addEtiquette(Long id, Long idEtiquette) throws EntityNotFoundException;
-    Product addVariety(Long id, Long idVariety) throws EntityNotFoundException;
+    ProductDTO addEtiquette(Long id, Long idEtiquette) throws MyEntityNotFoundException;
+    ProductDTO addVariety(Long id, Long idVariety) throws MyEntityNotFoundException;
 
+    public Product findProductByNom(String productName);
 }

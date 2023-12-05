@@ -11,25 +11,26 @@ import lombok.Setter;
 public class ProductDTO {
 
     /*@NotBlank(message = "Product name is required")
-    private String nomProduit;*/
-
+    private String nomProduct;*/
+    private Long idProduct;
     private String name;
     private String description;
-    private double prixProduit;
-    private Long cetegoryID;
+    private double prixProduct;
+    private Long categoryID;
 
-    public ProductDTO(String name, String description, double prixProduit, Long cetegoryID) {
+    public ProductDTO(Long idProduct,String name, String description, double prixProduct, Long categoryID) {
+        this.idProduct = idProduct;
         this.name = name;
         this.description = description;
-        this.prixProduit = prixProduit;
-        this.cetegoryID = cetegoryID;
+        this.prixProduct = prixProduct;
+        this.categoryID = categoryID;
     }
 /*
  If your transformation logic is straightforward, involves simple field mapping, and doesn't require
   extensive customization, constructor-based initialization provides a concise and readable way to create
    DTOs.*/
  /*   public ProductDTO(Product product) {
-        this.name = product.getNomProduit();
+        this.name = product.getNomProduct();
         this.description = product.getDescription();
     }
 */

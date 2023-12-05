@@ -10,32 +10,30 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "produits")
+@Table(name = "products")
 @NoArgsConstructor
 public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProduit;
-    private String nomProduit;
+    private Long idProduct;
+    private String nomProduct;
 //    @Column(nullable = false)
     private String description;
-    private double prixProduit;
+    private double prixProduct;
 
     @ManyToOne
     private Category category;
 
     @ManyToMany
     @JoinTable(
-            name = "produit_etiquette",
-            joinColumns = @JoinColumn(name = "produit_id"),
+            name = "product_etiquette",
+            joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "etiquette_id"))
     private Set<Etiquette> etiquettes;
-
-
     @ManyToMany
     @JoinTable(
-            name = "produit_variety",
-            joinColumns = @JoinColumn(name = "produit_id"),
+            name = "product_variety",
+            joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "variety_id"))
     private Set<Variety> varieties;
 

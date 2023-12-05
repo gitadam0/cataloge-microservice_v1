@@ -1,7 +1,7 @@
 package com.example.Cataloguemicroservice.Controller;
 
 import com.example.Cataloguemicroservice.Entities.Variety;
-import com.example.Cataloguemicroservice.Exceptions.EntityNotFoundException;
+import com.example.Cataloguemicroservice.Exceptions.MyEntityNotFoundException;
 import com.example.Cataloguemicroservice.Services.Variety.VarietyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class VarietyController {
     }
 
     @GetMapping("/{id}")
-    public Variety getVarietyByID(@PathVariable Long id) throws EntityNotFoundException {
+    public Variety getVarietyByID(@PathVariable Long id) throws MyEntityNotFoundException {
         return varietyService.getVarietyByID(id);
     }
 
@@ -38,8 +38,9 @@ public class VarietyController {
         return ResponseEntity.ok().build();
     }
 
+
     @PutMapping("/{id}")
-    public Variety updateVariety(@PathVariable Long id, @RequestBody Variety variety) throws EntityNotFoundException {
+    public Variety updateVariety(@PathVariable Long id, @RequestBody Variety variety) throws MyEntityNotFoundException {
         return varietyService.updateVariety(id, variety);
     }
 }

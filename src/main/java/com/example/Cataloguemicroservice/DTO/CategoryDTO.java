@@ -11,5 +11,5 @@ public class CategoryDTO {
     private Long idCategory;
     private String nomCategory;
     // Add more fields as needed
-    private List<ProductDTO> produits;
+    private List<ProductDTO> products;
 }
